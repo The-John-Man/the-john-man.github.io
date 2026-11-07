@@ -1,0 +1,30 @@
+:root {
+  --paper: #f4f2ec;
+  --surface: #ffffff;
+  --graphite: #17191c;
+  --muted-text: #51565b;
+  --rule: #c8c8c1;
+  --signal: #2448cf;
+  --type: "Instrument Sans", Arial, sans-serif;
+  --annotation: "IBM Plex Mono", Consolas, monospace;
+  --display: clamp(3.25rem, 8vw, 8.5rem);
+  --chapter: clamp(2.4rem, 5.7vw, 5.8rem);
+  --body: clamp(1rem, 1.35vw, 1.25rem);
+  --gutter: clamp(1.25rem, 5vw, 6rem);
+  --section-gap: clamp(4rem, 10vw, 11rem);
+  --display-leading: 0.98;
+  --body-leading: 1.55;
+  --display-tracking: -0.055em;
+  --text-width: 62ch;
+  --focus: 3px solid var(--signal);
+  --control-target: 44px;
+  --reveal: 280ms;
+  --carousel-step: 580ms;
+  --settle: cubic-bezier(0.22, 0.68, 0.18, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --reveal: 0ms;
+    --carousel-step: 0ms;
+  }
+}

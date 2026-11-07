@@ -1,0 +1,156 @@
+{
+  "_editor": "Working editorial draft. John reviews all copy and evidence before publication. Null values are slots for the editor. Use only approved entries in public builds.",
+  "profile": {
+    "name": "John Manuel",
+    "program": "Mechatronics Engineering, BASc (Co-op)",
+    "school": "University of Waterloo",
+    "intro": "I’m John, a mechatronics student at Waterloo. I like the point in a build where a drawing, a few wires and some code finally do something together.",
+    "personalDetail": null,
+    "portrait": null,
+    "resumeUrl": null,
+    "contactUrl": null
+  },
+  "aboutNotebook": [
+    {
+      "label": "Sketch",
+      "asset": null,
+      "alt": null,
+      "caption": null,
+      "prompt": "Which constraint changed the gantry design? Include a sketch."
+    },
+    {
+      "label": "Build",
+      "asset": null,
+      "alt": null,
+      "caption": null,
+      "prompt": "Which part did you contribute? Show the matching build or CAD view."
+    },
+    {
+      "label": "Test",
+      "asset": null,
+      "alt": null,
+      "caption": null,
+      "prompt": "What did you try, what did you observe, and what changed?"
+    }
+  ],
+  "experience": [
+    {
+      "organization": "Vaughan Malayalee Association",
+      "role": null,
+      "type": "Community volunteering",
+      "dates": null,
+      "context": "Event sound, lighting and projection",
+      "personalAction": null,
+      "outcome": null,
+      "media": null
+    },
+    {
+      "organization": "Kumon",
+      "role": null,
+      "type": null,
+      "dates": null,
+      "context": null,
+      "personalAction": null,
+      "outcome": null,
+      "media": null
+    },
+    {
+      "organization": null,
+      "role": "Lifeguarding",
+      "type": null,
+      "dates": null,
+      "context": null,
+      "personalAction": null,
+      "outcome": null,
+      "media": null
+    }
+  ],
+  "projects": [
+    {
+      "title": "WireTrace",
+      "slug": "wiretrace",
+      "discipline": "Electronics · Software",
+      "summary": "Plan a breadboard layout and see where each jumper goes.",
+      "editorPrompt": "Show one circuit in the visualizer, then show what changed when a pin assignment was corrected.",
+      "sourceUrl": "https://github.com/The-John-Man/WireTrace",
+      "status": null,
+      "contribution": null,
+      "designDecision": null,
+      "result": null,
+      "nextStep": null,
+      "heroImage": null,
+      "heroAlt": null,
+      "demoUrl": null,
+      "readyForPublication": false
+    },
+    {
+      "title": "FaceTracekr",
+      "slug": "facetracekr",
+      "discipline": "Computer vision · Accessibility",
+      "summary": "Explore how head movement and intentional winks can control a cursor.",
+      "editorPrompt": "Show one intentional wink alongside a normal blink. Describe how you assessed responsiveness.",
+      "sourceUrl": "https://github.com/The-John-Man/FaceTracekr",
+      "status": null,
+      "contribution": null,
+      "designDecision": null,
+      "result": null,
+      "nextStep": null,
+      "heroImage": null,
+      "heroAlt": null,
+      "demoUrl": null,
+      "readyForPublication": false
+    },
+    {
+      "title": "Humline",
+      "slug": "humline",
+      "discipline": "Audio · Software",
+      "summary": "Hum a melody and turn it into MIDI.",
+      "editorPrompt": "Pair a short original recording with its MIDI output, then describe a pitch-detection decision.",
+      "sourceUrl": null,
+      "status": null,
+      "contribution": null,
+      "designDecision": null,
+      "result": null,
+      "nextStep": null,
+      "heroImage": null,
+      "heroAlt": null,
+      "demoUrl": null,
+      "readyForPublication": false
+    },
+    {
+      "title": "Tower of Hanoi gantry",
+      "slug": "hanoi-gantry",
+      "discipline": "Robotics · Team design",
+      "summary": "Design a gantry and gripper to move four Tower of Hanoi pieces.",
+      "editorPrompt": "Show the horizontal carriage and vertical lift. Credit teammates and identify John’s part.",
+      "sourceUrl": null,
+      "status": null,
+      "contribution": null,
+      "designDecision": null,
+      "result": null,
+      "nextStep": null,
+      "heroImage": null,
+      "heroAlt": null,
+      "demoUrl": null,
+      "readyForPublication": false
+    }
+  ],
+  "goals": [
+    {
+      "title": "A balancing delivery robot",
+      "stage": "Planned",
+      "question": "Can a two-wheel robot carry an envelope across an office and stay balanced?",
+      "proposedNextExperiment": "Simulate balancing with a representative payload.",
+      "successCriterionToSet": "Choose a payload and measurable balance criterion before the first trial.",
+      "evidence": null
+    },
+    {
+      "title": "Hands-free interaction",
+      "stage": "Proposed",
+      "question": "How can someone tell whether their wink was detected during calibration?",
+      "proposedNextExperiment": "Compare two visual feedback cues during calibration.",
+      "successCriterionToSet": null,
+      "evidence": null
+    }
+  ]
+}
