@@ -37,7 +37,7 @@ export function NextPage({ current }: { current: string }) {
     <div className="section">
       <a className="next-page" href={next.href} style={{ "--pin": next.color } as React.CSSProperties}>
         <span>Next</span>
-        {next.label}
+        <strong>{next.label}</strong>
       </a>
     </div>
   );
