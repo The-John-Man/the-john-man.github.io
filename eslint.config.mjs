@@ -11,6 +11,8 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  // Internal links are plain <a> so the 3D page-flip view transition runs (see app/site-nav.tsx).
+  { rules: { "@next/next/no-html-link-for-pages": "off" } },
   {
     ignores: [
       "node_modules/**",

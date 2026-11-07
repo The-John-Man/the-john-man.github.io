@@ -1,22 +1,21 @@
-import Image from "next/image";
-import { profile, projects, inTheWorks, skills } from "@/content/site";
+import { profile, skills } from "@/content/site";
+import { pages } from "./site-nav";
 
 // Each wire runs from a header pin on the left to a nav pad on the right.
 const pinsY = [90, 160, 230, 300];
 const pads = [
-  { label: "Projects", href: "#projects", y: 40 },
-  { label: "In the works", href: "#works", y: 140 },
-  { label: "About", href: "#about", y: 240 },
-  { label: "Contact", href: "#contact", y: 340 },
+  { label: "About", href: "#about", y: 40 },
+  { label: "Projects", href: "/projects", y: 140 },
+  { label: "Experience", href: "/experience", y: 240 },
+  { label: "Interests", href: "/interests", y: 340 },
 ];
 const wires = [
-  { from: 1, to: 0, color: "var(--wire-orange)" },
-  { from: 3, to: 1, color: "var(--wire-yellow)" },
+  { from: 1, to: 0, color: "var(--wire-yellow)" },
+  { from: 3, to: 1, color: "var(--wire-orange)" },
   { from: 0, to: 2, color: "var(--wire-blue)" },
   { from: 2, to: 3, color: "var(--wire-red)" },
 ];
 const pinNames = ["D2", "D5", "D9", "D13"];
-const accents = ["var(--wire-orange)", "var(--wire-blue)", "var(--wire-red)"];
 
 function Board() {
   return (
@@ -52,14 +51,6 @@ function Board() {
 }
 
 export default function Home() {
-  const { links } = profile;
-  const contact = [
-    { label: "GitHub", href: links.github },
-    { label: "LinkedIn", href: links.linkedin },
-    { label: "Email", href: links.email && `mailto:${links.email}` },
-    { label: "Resume", href: links.resume },
-  ].filter((l) => l.href);
-
   return (
     <main>
       <header className="hero">
@@ -74,78 +65,31 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="projects" className="section">
-        <h2>Projects</h2>
-        {projects.map((p, i) => (
-          <article key={p.name} className="project" style={{ "--accent": accents[i % accents.length] } as React.CSSProperties}>
-            <div className="project-media">
-              {p.image ? (
-                <Image src={p.image.src} width={p.image.width} height={p.image.height} alt={p.image.alt} sizes="(max-width: 860px) 100vw, 60vw" />
-              ) : (
-                <dl className="gestures">
-                  {p.gestures?.map((g) => (
-                    <div key={g.action}>
-                      <dt>{g.action}</dt>
-                      <dd>{g.result}</dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
-            </div>
-            <div className="project-text">
-              <h3>{p.name}</h3>
-              <p className="summary">{p.summary}</p>
-              <p>{p.description}</p>
-              <ul className="tech">
-                {p.tech.map((t) => <li key={t}>{t}</li>)}
-              </ul>
-              {p.note && <p className="note">{p.note}</p>}
-              {p.links.length > 0 && (
-                <p className="links">
-                  {p.links.map((l) => <a key={l.href} href={l.href}>{l.label}</a>)}
-                </p>
-              )}
-            </div>
-          </article>
-        ))}
-      </section>
+      <div className="sheet">
+        <section id="about" className="section about">
+          <h2>About me</h2>
+          <p className="about-text">{profile.about}</p>
+          <div className="skills">
+            {skills.map((s) => (
+              <div key={s.group}>
+                <h3>{s.group}</h3>
+                <ul>{s.items.map((i) => <li key={i}>{i}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      <section id="works" className="section">
-        <h2>In the works</h2>
-        <ul className="works">
-          {inTheWorks.map((w) => (
-            <li key={w.name}>
-              <h3>{w.name}</h3>
-              <p>{w.description}</p>
-              <ul className="tech">
-                {w.tech.map((t) => <li key={t}>{t}</li>)}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section id="about" className="section about">
-        <h2>About</h2>
-        <p className="about-text">{profile.about}</p>
-        <div className="skills">
-          {skills.map((s) => (
-            <div key={s.group}>
-              <h3>{s.group}</h3>
-              <ul>{s.items.map((i) => <li key={i}>{i}</li>)}</ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="contact" className="section">
-        <h2>Contact</h2>
-        <p className="links big">
-          {contact.map((l) => <a key={l.label} href={l.href}>{l.label}</a>)}
-        </p>
-      </section>
-
-      <footer className="footer">Built by {profile.name} with Next.js.</footer>
+        <section className="section">
+          <h2>Keep going</h2>
+          <ul className="page-links">
+            {pages.map((p) => (
+              <li key={p.href}>
+                <a href={p.href} style={{ "--pin": p.color } as React.CSSProperties}>{p.label}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </main>
   );
 }

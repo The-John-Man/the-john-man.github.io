@@ -7,9 +7,13 @@ Personal portfolio site built with Next.js. Hosted on Vercel.
 Everything you'd want to change lives in [`content/site.ts`](content/site.ts):
 
 - `profile`: name, tagline, about text, and links (leave a link as `""` to hide it)
-- `projects`: shipped projects shown with a screenshot (put images in `public/projects/`)
+- `skills`: the skill lists in the About section on the home page
+- `projects`: shipped projects on /projects, shown with a screenshot (put images in `public/shots/`)
 - `inTheWorks`: projects you're still building (move one to `projects` when it ships)
-- `skills`: the skill lists in the About section
+- `experience`: jobs and roles on /experience, newest first
+- `aspirations` and `interests`: the /interests page
+
+Search the file for `TODO` and `[` to find the placeholders still to fill in.
 
 Colors and fonts are the tokens at the top of [`app/globals.css`](app/globals.css).
 

@@ -1,5 +1,5 @@
 // All the words on the site live here. Edit this file to change content;
-// the page layout in app/page.tsx reads from it.
+// the pages in app/ read from it.
 // Leave a link as "" to hide it.
 
 export const profile = {
@@ -43,7 +43,7 @@ export const projects: Project[] = [
       "A Windows desktop app for Arduino builders. Lay out boards and parts on a virtual breadboard, click any pin to trace everything on its net, and save a checkpoint when the build works. Later, compare against that checkpoint to see which wires moved, then export matching pin definitions so your firmware and your hardware agree.",
     tech: ["TypeScript", "React", "Tauri", "SVG"],
     image: {
-      src: "/projects/wiretrace.png",
+      src: "/shots/wiretrace.png",
       width: 1440,
       height: 900,
       alt: "WireTrace tracing the ground net of a servo across an Arduino Uno and a half-size breadboard, with every connected point outlined in orange.",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "A browser music studio. Record a hum, and pitch detection running in a Web Worker turns it into notes on a piano roll you can drag, resize and replay. Export a MIDI file when it sounds right. Accounts and a private melody library run on Clerk and PostgreSQL.",
     tech: ["TypeScript", "React", "Vite", "Web Audio", "PostgreSQL"],
     image: {
-      src: "/projects/humline.png",
+      src: "/shots/humline.png",
       width: 1440,
       height: 1239,
       alt: "Humline's studio: a recording panel on the left and a piano roll with five purple note blocks on the right.",
@@ -91,5 +91,72 @@ export const inTheWorks = [
     description:
       "Log meals and insulin doses in one place. Describe what you ate in plain words and an AI model estimates the carbs. Every number is labeled as an estimate, never a dose recommendation.",
     tech: ["Python", "Flask", "PostgreSQL", "LLM API"],
+  },
+];
+
+// Newest first. Copy an entry to add another job, internship, or volunteer role.
+export const experience = [
+  {
+    role: "Independent developer",
+    org: "Self-directed projects",
+    dates: "2025 to now",
+    points: [
+      "Designed and built WireTrace, a Windows desktop app (Tauri, React) for documenting Arduino wiring, with checkpoints, comparisons, and firmware pin export.",
+      "Shipped Humline, a browser music studio that turns a hummed melody into editable notes and MIDI, with accounts and a PostgreSQL library.",
+      "Built HeadNav, a free webcam-based mouse for people with limited hand mobility, in Python with OpenCV and MediaPipe.",
+    ],
+  },
+  {
+    // TODO: replace with a real role, or delete this entry.
+    role: "[Your role]",
+    org: "[Company or organization]",
+    dates: "[Start] to [end]",
+    points: [
+      "[What you worked on, and the result if you have one]",
+      "[A tool, team, or responsibility worth mentioning]",
+    ],
+  },
+];
+
+// Time horizons, so they read in order: now, next, someday.
+export const aspirations = [
+  {
+    when: "Now",
+    text: "Get WireTrace into the hands of real Arduino builders and learn what they actually need from it.",
+  },
+  {
+    when: "Next",
+    // TODO
+    text: "[The role or kind of team you want to join next, e.g. a software engineering role building tools people rely on.]",
+  },
+  {
+    when: "Someday",
+    // TODO
+    text: "[The big dream: what you'd build or do if nothing stood in the way.]",
+  },
+];
+
+// Drafted from your projects. Edit freely.
+export const interests = [
+  {
+    name: "Accessible tech",
+    text: "Software that adapts to the person using it, not the other way round. HeadNav started here.",
+  },
+  {
+    name: "Music and sound",
+    text: "Pitch detection, MIDI, and the gap between humming a tune and writing it down.",
+  },
+  {
+    name: "Hardware and making",
+    text: "Arduino, breadboards, and keeping the record of a build as tidy as the build itself.",
+  },
+  {
+    name: "Health tools",
+    text: "Making the everyday tracking that health needs a little less of a chore.",
+  },
+  {
+    // TODO
+    name: "[Something outside tech]",
+    text: "[A sport, a game, a place, a hobby: whatever you'd talk about for an hour.]",
   },
 ];
