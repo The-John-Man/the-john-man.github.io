@@ -43,3 +43,7 @@ next-env.d.ts
 # browser test outputs
 /test-results/
 /playwright-report/
+
+# local tool output
+/.playwright-mcp/
+/graphify-out/

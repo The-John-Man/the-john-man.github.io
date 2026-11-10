@@ -1,6 +1,6 @@
 import data from "@/content/site";
 import { notFound } from "next/navigation";
-import { Arrow, ProjectArt } from "../../components/icons";
+import { Arrow, ProjectMedia } from "../../components/icons";
 import NetDemo from "../../components/net-demo";
 import BackLink from "../../components/back-link";
 export function generateStaticParams() {
@@ -25,15 +25,15 @@ export default async function Project({
   const p = data.projects[index];
   if (!p) notFound();
   const next = data.projects[(index + 1) % data.projects.length];
+  // Unfilled editorial slots render nothing, so a draft page has no empty rows.
   const fields = [
     ["My contribution", p.contribution],
-    ["Design decision", p.designDecision],
     ["Observed result", p.result],
     ["Next step", p.nextStep],
-  ];
+  ].filter(([, value]) => value);
   return (
     <main id="main" className="case">
-      <BackLink />
+      <BackLink slug={p.slug} />
       <div className="case-header">
         <p className="eyebrow">
           Project / {String(index + 1).padStart(2, "0")} · {p.discipline}
@@ -58,40 +58,39 @@ export default async function Project({
         className="case-hero"
         style={{ viewTransitionName: `project-${p.slug}` }}
       >
-        <ProjectArt kind={p.slug} />
+        <ProjectMedia p={p} />
         <figcaption>
-          Concept illustration · original project media to follow
+          {p.heroCaption ??
+            "Concept illustration · original project media to follow"}
         </figcaption>
       </figure>
-      <div className="case-body">
-        <div>
-          <p className="eyebrow">The idea</p>
-          <h2>
-            {p.slug === "wiretrace"
-              ? "Make connections visible."
-              : p.slug === "facetracekr"
-                ? "An intentional gesture."
-                : p.slug === "humline"
-                  ? "From a hum to a melody."
-                  : "A mechanism with a purpose."}
-          </h2>
-          <p className="lead">{p.summary}</p>
+      {(p.designDecision || fields.length > 0) && (
+        <div className="case-body">
+          <div>
+            <p className="eyebrow">The idea</p>
+            <h2>
+              {p.slug === "wiretrace"
+                ? "Make connections visible."
+                : p.slug === "facetracekr"
+                  ? "An intentional gesture."
+                  : p.slug === "humline"
+                    ? "From a hum to a melody."
+                    : "A mechanism with a purpose."}
+            </h2>
+            {p.designDecision && <p className="lead">{p.designDecision}</p>}
+          </div>
+          {fields.length > 0 && (
+            <dl className="case-facts">
+              {fields.map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
         </div>
-        <dl className="case-facts">
-          {fields.map(([label, value]) => (
-            <div key={label}>
-              <dt>{label}</dt>
-              <dd>
-                {value || (
-                  <span className="empty-field" aria-label="Not yet supplied">
-                    —
-                  </span>
-                )}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
+      )}
       {p.slug === "wiretrace" && <NetDemo />}
       <div className="next-case">
         <span className="eyebrow">Next project</span>

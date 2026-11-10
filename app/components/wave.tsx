@@ -27,7 +27,7 @@ export default function Wave() {
                   Math.sin(i * 0.13 + offset + j * 0.08) *
                     Math.exp(-Math.pow((i - 40) / 25, 2)) *
                     60;
-              return `${i ? "L" : "M"}${x} ${y}`;
+              return `${i ? "L" : "M"}${x} ${y.toFixed(2)}`;
             }).join(" ")}
             fill="none"
             stroke={j === 10 ? "#2448cf" : "#a9b2a7"}

@@ -78,8 +78,9 @@
       "designDecision": null,
       "result": null,
       "nextStep": null,
-      "heroImage": null,
-      "heroAlt": null,
+      "heroImage": "/shots/wiretrace-net.png",
+      "heroAlt": "WireTrace visualizer tracing the M1 Ground net: an Arduino, breadboard, servo and supply with every connected pin circled in orange.",
+      "heroCaption": "Visualizer · tracing the M1 Ground net",
       "demoUrl": null,
       "readyForPublication": false
     },
@@ -97,6 +98,7 @@
       "nextStep": null,
       "heroImage": null,
       "heroAlt": null,
+      "heroCaption": null,
       "demoUrl": null,
       "readyForPublication": false
     },
@@ -112,8 +114,9 @@
       "designDecision": null,
       "result": null,
       "nextStep": null,
-      "heroImage": null,
-      "heroAlt": null,
+      "heroImage": "/shots/humline-roll.png",
+      "heroAlt": "Humline piano roll showing six notes from C4 to C5 under the waveform of the source audio.",
+      "heroCaption": "Piano roll · synthetic example, not a recorded hum",
       "demoUrl": null,
       "readyForPublication": false
     },
@@ -131,6 +134,7 @@
       "nextStep": null,
       "heroImage": null,
       "heroAlt": null,
+      "heroCaption": null,
       "demoUrl": null,
       "readyForPublication": false
     }

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef, type CSSProperties } from "react";
 import data from "@/content/site";
-import { Arrow, ProjectArt } from "./components/icons";
+import { Arrow, ProjectMedia } from "./components/icons";
 type Project = (typeof data.projects)[number];
 const defaultProjects = data.projects.slice(0, 3);
 export default function Gallery({
@@ -10,7 +10,7 @@ export default function Gallery({
   projects?: Project[];
 }) {
   const [index, setIndex] = useState(0);
-  const [turn, setTurn] = useState(0);
+  const [move, setMove] = useState({ turn: 0, dir: 0 });
   const pointer = useRef<{ x: number; y: number } | null>(null);
   const link = useRef<HTMLAnchorElement>(null);
   const count = projects.length;
@@ -18,7 +18,9 @@ export default function Gallery({
 
   useEffect(() => {
     function restore() {
-      const saved = sessionStorage.getItem("portfolio-project");
+      // The URL wins so a return link works in a fresh tab; sessionStorage covers Back.
+      const fromUrl = new URLSearchParams(location.search).get("project");
+      const saved = fromUrl || sessionStorage.getItem("portfolio-project");
       const i = projects.findIndex((p) => p.slug === saved);
       if (i >= 0) {
         setIndex(i);
@@ -32,7 +34,7 @@ export default function Gallery({
             });
         });
       }
-      if (sessionStorage.getItem("portfolio-return")) {
+      if (fromUrl || sessionStorage.getItem("portfolio-return")) {
         sessionStorage.removeItem("portfolio-return");
         requestAnimationFrame(() => {
           document
@@ -49,7 +51,9 @@ export default function Gallery({
   function choose(i: number) {
     if (!count) return;
     const next = (i + count) % count;
-    setTurn((t) => t + 1);
+    if (next === index) return;
+    const dir = i > index ? 1 : -1;
+    setMove((m) => ({ turn: m.turn + dir, dir }));
     setIndex(next);
     const el = rail.current;
     if (el && matchMedia("(max-width: 700px)").matches) {
@@ -84,7 +88,7 @@ export default function Gallery({
       <div
         ref={rail}
         className="turntable"
-        style={{ "--turn": `${turn * 45}deg` } as CSSProperties}
+        style={{ "--turn": `${move.turn * 45}deg` } as CSSProperties}
         onPointerDown={(e) => {
           pointer.current = { x: e.clientX, y: e.clientY };
         }}
@@ -159,7 +163,13 @@ export default function Gallery({
             ))}
           </svg>
         </div>
-        <div className="orbit" aria-hidden="true" />
+        {/* Remounted per step so the cobalt spark runs once and stops where it lands. */}
+        <div
+          key={move.turn}
+          className="orbit"
+          data-dir={move.dir > 0 ? "next" : move.dir < 0 ? "prev" : undefined}
+          aria-hidden="true"
+        />
         {projects.map((item, i) => {
           let d = (i - index + count) % count;
           if (d > count / 2) d -= count;
@@ -178,15 +188,42 @@ export default function Gallery({
                 } as CSSProperties
               }
             >
-              <ProjectArt kind={item.slug} />
-              <div className="print-caption">
-                <span>{item.title}</span>
-                <small>0{i + 1} / STUDY</small>
-              </div>
+              <ProjectMedia p={item} />
+              <p className="print-caption">
+                {item.heroCaption ?? "Concept illustration · capture to follow"}
+              </p>
             </div>
           );
         })}
       </div>
+      {count > 1 && (
+        <div className="gallery-controls">
+          <button
+            aria-label="Previous project"
+            onClick={() => choose(index - 1)}
+          >
+            <Arrow back />
+          </button>
+          <span className="gallery-count" aria-hidden="true">
+            {index + 1} of {count}
+          </span>
+          <div className="project-dots" aria-label="Choose project">
+            {projects.map((item, i) => (
+              <button
+                key={item.slug}
+                aria-label={"Show " + item.title}
+                aria-pressed={i === index}
+                onClick={() => choose(i)}
+              >
+                <span />
+              </button>
+            ))}
+          </div>
+          <button aria-label="Next project" onClick={() => choose(index + 1)}>
+            <Arrow />
+          </button>
+        </div>
+      )}
       <div className="project-description">
         <div aria-live="polite" aria-atomic="true">
           <p className="eyebrow">{p.discipline}</p>
@@ -206,31 +243,6 @@ export default function Gallery({
           Explore project <Arrow />
         </a>
       </div>
-      {count > 1 && (
-        <div className="gallery-controls">
-          <button
-            aria-label="Previous project"
-            onClick={() => choose(index - 1)}
-          >
-            <Arrow back />
-          </button>
-          <div className="project-dots" aria-label="Choose project">
-            {projects.map((item, i) => (
-              <button
-                key={item.slug}
-                aria-label={"Show " + item.title}
-                aria-pressed={i === index}
-                onClick={() => choose(i)}
-              >
-                <span />
-              </button>
-            ))}
-          </div>
-          <button aria-label="Next project" onClick={() => choose(index + 1)}>
-            <Arrow />
-          </button>
-        </div>
-      )}
       <div className="reduced-project-list">
         {projects.map((item, i) => (
           <button
@@ -253,9 +265,6 @@ export default function Gallery({
           ))}
         </ul>
       </noscript>
-      <p className="art-note">
-        Illustrated concepts · project captures to follow
-      </p>
     </div>
   );
 }

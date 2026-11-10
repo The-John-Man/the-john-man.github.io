@@ -10,6 +10,24 @@ export function Arrow({ back = false }: { back?: boolean }) {
     </svg>
   );
 }
+export function ProjectMedia({
+  p,
+}: {
+  p: { slug: string; heroImage: string | null; heroAlt: string | null };
+}) {
+  return p.heroImage ? (
+    // eslint-disable-next-line @next/next/no-img-element -- static export, no image optimizer
+    <img
+      className="illustration project-shot"
+      src={p.heroImage}
+      alt={p.heroAlt ?? ""}
+      width={640}
+      height={400}
+    />
+  ) : (
+    <ProjectArt kind={p.slug} />
+  );
+}
 export function ProjectArt({ kind }: { kind: string }) {
   return (
     <svg
@@ -110,14 +128,18 @@ export function ProjectArt({ kind }: { kind: string }) {
         </>
       ) : kind === "humline" ? (
         <>
-          {Array.from({ length: 43 }, (_, i) => (
-            <path
-              key={i}
-              d={`M${70 + i * 12} ${120 - Math.sin(i * 0.6) * Math.sin(i * 0.14) * 58}v${Math.sin(i * 0.6) * Math.sin(i * 0.14) * 116}`}
-              stroke="#2448cf"
-              strokeWidth="5"
-            />
-          ))}
+          {Array.from({ length: 43 }, (_, i) => {
+            // Rounded so server and browser trig agree (hydration mismatch otherwise).
+            const a = Math.round(Math.sin(i * 0.6) * Math.sin(i * 0.14) * 5800) / 100;
+            return (
+              <path
+                key={i}
+                d={`M${70 + i * 12} ${120 - a}v${a * 2}`}
+                stroke="#2448cf"
+                strokeWidth="5"
+              />
+            );
+          })}
           {Array.from({ length: 8 }, (_, i) => (
             <rect
               key={i}
