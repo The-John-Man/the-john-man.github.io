@@ -1,15 +1,13 @@
 import data from "@/content/site";
 import Notebook from "../components/notebook";
-import { Arrow } from "../components/icons";
+import TitleBlock from "../components/title-block";
+import Slot from "../home/slot";
 export const metadata = { title: "About — John Manuel" };
 export default function About() {
   return (
     <main id="main">
       <section id="about" className="chapter">
-        <a className="text-link board-back" href="/#board">
-          <Arrow back /> Back to the board
-        </a>
-        <p className="eyebrow">01 / About me</p>
+        <TitleBlock doc="About John" status={data.profile.status} back="/#origin" />
         <div className="about-grid">
           <div>
             <h2>
@@ -26,11 +24,20 @@ export default function About() {
             {data.profile.personalDetail && (
               <p>{data.profile.personalDetail}</p>
             )}
-            <a className="text-link" href="/experience">
-              Keep following <Arrow />
-            </a>
           </div>
           <Notebook />
+        </div>
+        <div className="stories">
+          {data.origin.map((o) => (
+            <article key={o.id}>
+              <Slot value={o.photo} prompt={o.photoPrompt} ratio="4 / 3">
+                {/* eslint-disable-next-line @next/next/no-img-element -- static export, no image optimizer */}
+                <img src={o.photo ?? ""} alt={o.photoAlt ?? ""} />
+              </Slot>
+              <h3>{o.title}</h3>
+              <p>{o.body}</p>
+            </article>
+          ))}
         </div>
       </section>
     </main>

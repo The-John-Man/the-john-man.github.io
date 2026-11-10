@@ -510,6 +510,23 @@ html.scrub .led {
   .rail {
     display: none;
   }
+  /* The board shows through between sections; copy sits on a darker band. */
+  html[data-scene] .board > section,
+  html[data-scene] .more-projects {
+    background: linear-gradient(
+      transparent,
+      rgb(11 13 16 / 0.82) 18%,
+      rgb(11 13 16 / 0.82) 82%,
+      transparent
+    );
+  }
+  html[data-scene] .board > #boot {
+    min-height: 100svh;
+    background: linear-gradient(rgb(11 13 16 / 0.7) 30%, transparent 60%);
+  }
+  body:has(main.board) header {
+    background: rgb(11 13 16 / 0.92);
+  }
   body:has(main.board) header::after {
     content: "";
     position: absolute;

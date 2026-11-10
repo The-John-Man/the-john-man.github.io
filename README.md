@@ -21,21 +21,22 @@ npm run build
 npm test
 ```
 
-With an existing system Chromium, use `CHROMIUM_PATH=/usr/bin/chromium npm test`. The test runner starts a production server on port 3001 (or reuses an existing local instance). Tests cover notebook keyboard interaction, disclosures, project navigation and return focus, direct project routes and 404s, the wiring demonstration, mobile snapping, reduced motion, canvas failure, no-JavaScript navigation, and reverse scrolling.
+The test runner starts a production server on port 3001. Tests cover the eight home blocks in order, header and rail navigation, DNP slots, the skills filter, project datasheet routes and 404s, the phone layout, reduced motion (no canvas), no-JavaScript reading, scene loading and reversible scroll stepping, the notebook, disclosures and the wiring demonstration.
 
 ## Content and publication
 
-Edit `content/site.json`. The supplied draft is displayed for review. Null dates, roles, personal actions, results, résumé and contact remain unfilled. `content/site.ts` types editable slots as nullable strings. Do not replace missing facts with inferred accomplishments.
+Edit `content/site.json`. The supplied draft is displayed for review. Every `null` value renders as a labelled DNP slot (an unpopulated footprint) saying what belongs there; fill the value and the slot becomes the real thing. Set `showEmptySlots` to `false` to hide all remaining slots. `content/site.ts` types editable slots as nullable strings. Do not replace missing facts with inferred accomplishments.
 
 The app deliberately ships `noindex` metadata and an editorial-preview footer. Before a public release, approve the copy and project claims, supply authentic media and final destinations, then change those settings. This branch has not been deployed.
 
 ## Implementation
 
-- `app/components/intro.tsx`: world-space board projection, arched jumper, arc-length signal travel and scroll-driven camera; draws only on resize/scroll while visible. Pixel ratio is capped at 1.5. No WebGL dependency; static SVG remains if canvas or JavaScript is unavailable.
-- `app/components/notebook.tsx`: keyboard-operated Sketch/Build/Test tabs. Current illustrations and blank test record are explicitly not project evidence.
-- `app/gallery.tsx`: CSS perspective turntable; keyboard/buttons/drag on desktop, native scroll snapping on phones. Selection persists per browser tab, Back restores focus, reduced motion exposes a plain project selector.
-- `app/projects/[slug]/page.tsx`: four statically generated case-study routes; missing evidence fields remain blank. Native cross-document view transitions enhance supported browsers.
-- `app/components/net-demo.tsx`: illustrative wiring explanation. This is not a reproduction or screenshot of WireTrace.
-- `app/components/wave.tsx`: pointer-responsive decorative control surface; no continuous render loop.
+The home page is one circuit board. The HTML is complete on its own; the 3D board is an enhancement behind it.
 
-The opening uses a compact procedural scene rather than a photorealistic authored GLB. Final media and real-device testing on John's laptop/phone remain release work; browser emulation does not substitute for those devices.
+- `app/page.tsx`, `app/home/`: the eight blocks (boot, origin, skills, experience, projects, beyond, goals, connect), the section rail and the `Slot` placeholder. `app/board.css` holds the board theme; the stacked layout is the default and the pinned, scroll-stepped layout applies on wide screens with motion allowed.
+- `app/lib/scroll.ts`: one scroll listener. It writes `--p` and `data-current` for the HTML and a plain `scroll` object the camera reads.
+- `app/scene/`: the react-three-fiber board. `map.ts` is the single source of truth for part positions, the signal route and the camera stops. Rendering is on demand (scroll, pointer, or an animation in progress), with no shadow maps and no post-processing.
+- `app/lib/quality.ts`: `static` (reduced motion, save-data or no WebGL2: no canvas), `lite` (small or low-power devices) or `full`.
+- Deep-dive pages (`/about`, `/experience`, `/projects`, `/projects/[slug]`, `/goals`) keep the ivory theme as datasheets, each with a title block linking back to its place on the board.
+
+Not done yet: pre-rendered poster images for the static tier, pointer tilt on project plates, automatic quality drop on slow frames, and frame-rate measurement on John's laptop and phone. A project `model` (GLB) field exists in the content but nothing renders it yet.

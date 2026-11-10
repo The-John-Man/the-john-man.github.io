@@ -1,14 +1,15 @@
 import data from "@/content/site";
-import { Arrow } from "../components/icons";
+import TitleBlock from "../components/title-block";
 export const metadata = { title: "Experience — John Manuel" };
 export default function Experience() {
   return (
     <main id="main">
       <section id="experience" className="chapter">
-        <a className="text-link board-back" href="/#board">
-          <Arrow back /> Back to the board
-        </a>
-        <p className="eyebrow">02 / Work experience</p>
+        <TitleBlock
+          doc="Experience"
+          status={data.profile.status}
+          back="/#experience"
+        />
         <div className="experience-grid">
           <h2>
             Learning by

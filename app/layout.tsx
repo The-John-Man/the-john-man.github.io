@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Must run before first paint: pagereveal fires before React hydrates. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("scrub");addEventListener("pagereveal",function(e){var o=sessionStorage.getItem("vt-origin"),d=document.documentElement;sessionStorage.removeItem("vt-origin");if(!o||!e.viewTransition||matchMedia("(prefers-reduced-motion: reduce)").matches)return;d.dataset.reveal="";e.viewTransition.ready.then(function(){d.animate({clipPath:["circle(0 at "+o+")","circle(150vmax at "+o+")"]},{duration:750,easing:"cubic-bezier(.7,0,.2,1)",pseudoElement:"::view-transition-new(root)"})});e.viewTransition.finished.finally(function(){delete d.dataset.reveal})});`,
+            __html: `if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("scrub");addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=\\"/\\"]");if(a)sessionStorage.setItem("vt-origin",e.clientX+"px "+e.clientY+"px")});addEventListener("pagereveal",function(e){var o=sessionStorage.getItem("vt-origin"),d=document.documentElement;sessionStorage.removeItem("vt-origin");if(!o||!e.viewTransition||matchMedia("(prefers-reduced-motion: reduce)").matches)return;d.dataset.reveal="";e.viewTransition.ready.then(function(){d.animate({clipPath:["circle(0 at "+o+")","circle(150vmax at "+o+")"]},{duration:750,easing:"cubic-bezier(.7,0,.2,1)",pseudoElement:"::view-transition-new(root)"})});e.viewTransition.finished.finally(function(){delete d.dataset.reveal})});`,
           }}
         />
       </head>

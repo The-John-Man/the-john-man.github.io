@@ -11,7 +11,7 @@ import { Decor, Signal, Slab } from "./board";
 import { Airwires, Bank, Bus, Chip, Modules, Usb, boot } from "./parts";
 
 /** Scroll-driven camera: eases between the stops in layout.ts, then glides to that pose. */
-function Rig({ lite }: { lite: boolean }) {
+function Rig({ lite, narrow }: { lite: boolean; narrow: boolean }) {
   const look = useRef(new THREE.Vector3(-1.1, 0, -0.6)),
     pointer = useRef({ x: 0, y: 0 }),
     started = useRef(0);
@@ -42,7 +42,12 @@ function Rig({ lite }: { lite: boolean }) {
 
     const { pos, look: target } = poseAt(scroll.g);
     // Phones: the copy covers the full width, so keep the subject centred.
-    if (lite) pos[0] = target[0] = (pos[0] + target[0]) / 2;
+    // A narrow screen also needs more distance to fit the same parts.
+    if (narrow) {
+      pos[0] = target[0] = (pos[0] + target[0]) / 2;
+      pos[1] = target[1] + (pos[1] - target[1]) * 1.45;
+      pos[2] = target[2] + (pos[2] - target[2]) * 1.45;
+    }
     pos[0] += pointer.current.x * 0.3;
     pos[1] -= pointer.current.y * 0.2;
     // Glide toward the scroll pose (time constant 120 ms, frame-rate independent).
@@ -95,13 +100,15 @@ function Lights() {
 
 export default function Scene({ tier }: { tier: Tier }) {
   const lite = tier === "lite";
+  // One-column layout: the copy spans the screen, so the camera centres its subject.
+  const narrow = matchMedia("(max-width: 900px)").matches;
   return (
     <div className="scene" aria-hidden="true">
       <Canvas
         frameloop="demand"
         dpr={lite ? 1 : Math.min(devicePixelRatio, 1.5)}
         gl={{ antialias: !lite, powerPreference: "high-performance" }}
-        camera={{ fov: lite ? 50 : 35, near: 0.1, far: 400, position: [6.4, 6.2, 11] }}
+        camera={{ fov: narrow ? 50 : 35, near: 0.1, far: 400, position: [6.4, 6.2, 11] }}
         eventSource={document.body}
         eventPrefix="client"
         onCreated={() => {
@@ -126,7 +133,7 @@ export default function Scene({ tier }: { tier: Tier }) {
         <Airwires />
         <Usb />
         {!lite && <Probe />}
-        <Rig lite={lite} />
+        <Rig lite={lite} narrow={narrow} />
       </Canvas>
     </div>
   );

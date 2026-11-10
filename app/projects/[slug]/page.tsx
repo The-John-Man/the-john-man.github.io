@@ -2,7 +2,8 @@ import data from "@/content/site";
 import { notFound } from "next/navigation";
 import { Arrow, ProjectMedia } from "../../components/icons";
 import NetDemo from "../../components/net-demo";
-import BackLink from "../../components/back-link";
+import TitleBlock from "../../components/title-block";
+import Slot from "../../home/slot";
 export function generateStaticParams() {
   return data.projects.map((p) => ({ slug: p.slug }));
 }
@@ -25,22 +26,27 @@ export default async function Project({
   const p = data.projects[index];
   if (!p) notFound();
   const next = data.projects[(index + 1) % data.projects.length];
-  // Unfilled editorial slots render nothing, so a draft page has no empty rows.
-  const fields = [
-    ["My contribution", p.contribution],
-    ["Observed result", p.result],
-    ["Next step", p.nextStep],
-  ].filter(([, value]) => value);
+  const stack = p.stack as string[];
+  const sections: [string, string | null, string][] = [
+    ["Problem", p.problem, "To add: who had the problem, and what made it hard"],
+    ["What I built", p.built ?? p.contribution, "To add: what you made, and which parts were yours"],
+    ["How it works", p.howItWorks ?? p.designDecision, "To add: the one design decision worth explaining"],
+    ["Results", p.result, "To add: what you observed, with the test conditions"],
+  ];
   return (
     <main id="main" className="case">
-      <BackLink slug={p.slug} />
+      <TitleBlock
+        doc={p.title}
+        status={p.status ?? (p.readyForPublication ? "Released" : "Draft")}
+        back="/#projects"
+      />
       <div className="case-header">
-        <p className="eyebrow">
-          Project / {String(index + 1).padStart(2, "0")} · {p.discipline}
-        </p>
+        <p className="eyebrow">{p.discipline}</p>
         <h1>{p.title}</h1>
         <p className="lead">{p.summary}</p>
-        {p.status && <p>{p.status}</p>}
+        <Slot value={p.role} prompt="Role: to add (solo, or your part in the team)">
+          <p className="muted">{p.role}</p>
+        </Slot>
         <div className="case-links">
           {p.sourceUrl && (
             <a className="text-link" href={p.sourceUrl}>
@@ -58,39 +64,46 @@ export default async function Project({
         className="case-hero"
         style={{ viewTransitionName: `project-${p.slug}` }}
       >
-        <ProjectMedia p={p} />
-        <figcaption>
-          {p.heroCaption ??
-            "Concept illustration · original project media to follow"}
-        </figcaption>
+        <Slot
+          value={p.heroImage}
+          prompt={"Cover video or image. " + p.editorPrompt}
+          ratio="16 / 10"
+        >
+          <ProjectMedia p={p} />
+          <figcaption>{p.heroCaption}</figcaption>
+        </Slot>
       </figure>
-      {(p.designDecision || fields.length > 0) && (
-        <div className="case-body">
-          <div>
-            <p className="eyebrow">The idea</p>
-            <h2>
-              {p.slug === "wiretrace"
-                ? "Make connections visible."
-                : p.slug === "facetracekr"
-                  ? "An intentional gesture."
-                  : p.slug === "humline"
-                    ? "From a hum to a melody."
-                    : "A mechanism with a purpose."}
-            </h2>
-            {p.designDecision && <p className="lead">{p.designDecision}</p>}
-          </div>
-          {fields.length > 0 && (
-            <dl className="case-facts">
-              {fields.map(([label, value]) => (
-                <div key={label}>
-                  <dt>{label}</dt>
-                  <dd>{value}</dd>
-                </div>
+      <div className="case-sections">
+        {sections.map(([title, value, prompt]) => (
+          <section key={title}>
+            <h2>{title}</h2>
+            <Slot value={value} prompt={prompt}>
+              <p className="lead">{value}</p>
+            </Slot>
+            {title === "How it works" && (
+              <Slot
+                value={p.diagram}
+                prompt="Diagram: a block diagram or annotated screenshot"
+                ratio="16 / 7"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- static export, no image optimizer */}
+                <img src={p.diagram ?? ""} alt="" />
+              </Slot>
+            )}
+          </section>
+        ))}
+        <section>
+          <h2>Stack</h2>
+          <Slot value={stack.length} prompt="To add: languages, tools and parts">
+            <ul className="chips">
+              {stack.map((s) => (
+                <li key={s}>{s}</li>
               ))}
-            </dl>
-          )}
-        </div>
-      )}
+            </ul>
+          </Slot>
+          {p.nextStep && <p className="muted">Next: {p.nextStep}</p>}
+        </section>
+      </div>
       {p.slug === "wiretrace" && <NetDemo />}
       <div className="next-case">
         <span className="eyebrow">Next project</span>

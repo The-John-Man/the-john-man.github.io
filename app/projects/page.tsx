@@ -1,23 +1,28 @@
-import Gallery from "../gallery";
-import { Arrow } from "../components/icons";
+import data from "@/content/site";
+import { ProjectMedia } from "../components/icons";
+import TitleBlock from "../components/title-block";
+import Slot from "../home/slot";
 export const metadata = { title: "Projects — John Manuel" };
 export default function Projects() {
   return (
     <main id="main">
-      <section id="projects" className="chapter projects-chapter">
-        <a className="text-link board-back" href="/#board">
-          <Arrow back /> Back to the board
-        </a>
-        <p className="eyebrow">03 / Selected projects</p>
-        <h2>Things I’m connecting.</h2>
-        <Gallery />
-        <div className="team-project">
-          <span className="eyebrow">Also on the workbench</span>
-          <a href="/projects/hanoi-gantry">
-            Tower of Hanoi gantry <Arrow />
-          </a>
-          <small>Robotics / team design</small>
-        </div>
+      <section id="projects" className="chapter">
+        <TitleBlock doc="Project index" status={`${data.projects.length} projects`} back="/#projects" />
+        <h2>Things I’ve built.</h2>
+        <ul className="project-index">
+          {data.projects.map((p) => (
+            <li key={p.slug}>
+              <a href={"/projects/" + p.slug}>
+                <Slot value={p.heroImage} prompt="Cover to add" ratio="16 / 10">
+                  <ProjectMedia p={p} />
+                </Slot>
+                <span className="eyebrow">{p.discipline}</span>
+                <strong>{p.title}</strong>
+                <span className="muted">{p.summary}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   );
