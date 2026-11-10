@@ -16,7 +16,9 @@ export default function Experience() {
             showing up.
           </h2>
           <div className="experience">
-            {data.experience.map((e, i) => (
+            {data.experience
+              .filter((e) => !e.open)
+              .map((e, i) => (
               <details key={i} name="experience">
                 <summary>
                   <span className="timeline-pad" />

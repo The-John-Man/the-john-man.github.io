@@ -10,7 +10,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--graphite);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--type);
   -webkit-font-smoothing: antialiased;
 }
 a {

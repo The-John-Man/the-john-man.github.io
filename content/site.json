@@ -8,7 +8,13 @@
     "personalDetail": null,
     "portrait": null,
     "resumeUrl": null,
-    "contactUrl": null
+    "contactUrl": null,
+    "tagline": "I build things where mechanics, electronics and code meet.",
+    "status": "Seeking Summer 2027 internships",
+    "location": "Ontario, Canada",
+    "email": null,
+    "linkedinUrl": null,
+    "githubUrl": "https://github.com/The-John-Man"
   },
   "aboutNotebook": [
     {
@@ -35,6 +41,17 @@
   ],
   "experience": [
     {
+      "organization": "University of Toronto",
+      "role": "CREATE program",
+      "type": null,
+      "dates": null,
+      "context": null,
+      "personalAction": null,
+      "outcome": null,
+      "media": null,
+      "open": false
+    },
+    {
       "organization": "Vaughan Malayalee Association",
       "role": null,
       "type": "Community volunteering",
@@ -42,7 +59,8 @@
       "context": "Event sound, lighting and projection",
       "personalAction": null,
       "outcome": null,
-      "media": null
+      "media": null,
+      "open": false
     },
     {
       "organization": "Kumon",
@@ -52,7 +70,8 @@
       "context": null,
       "personalAction": null,
       "outcome": null,
-      "media": null
+      "media": null,
+      "open": false
     },
     {
       "organization": null,
@@ -62,10 +81,76 @@
       "context": null,
       "personalAction": null,
       "outcome": null,
-      "media": null
+      "media": null,
+      "open": false
+    },
+    {
+      "organization": null,
+      "role": "Your team",
+      "type": null,
+      "dates": "Summer 2027",
+      "context": "Open for an internship.",
+      "personalAction": null,
+      "outcome": null,
+      "media": null,
+      "open": true
     }
   ],
   "projects": [
+    {
+      "title": "Insulin tracker",
+      "slug": "insulin-tracker",
+      "discipline": "Mobile · Health",
+      "summary": "An app that helps my grandmother keep track of her insulin.",
+      "editorPrompt": "Screen recording of logging a dose, or a photo of the app in her hands.",
+      "sourceUrl": null,
+      "status": null,
+      "contribution": null,
+      "designDecision": null,
+      "result": null,
+      "nextStep": null,
+      "heroImage": null,
+      "heroAlt": null,
+      "heroCaption": null,
+      "demoUrl": null,
+      "readyForPublication": false,
+      "featured": true,
+      "role": null,
+      "stack": [],
+      "video": null,
+      "model": null,
+      "problem": null,
+      "built": null,
+      "howItWorks": null,
+      "diagram": null
+    },
+    {
+      "title": "RC vehicles",
+      "slug": "rc-vehicles",
+      "discipline": "Mechanical · Electronics",
+      "summary": "Building radio-controlled cars.",
+      "editorPrompt": "Photo or clip of a car with the shell off. Export the SolidWorks assembly as GLB for a 3D exploded view.",
+      "sourceUrl": null,
+      "status": null,
+      "contribution": null,
+      "designDecision": null,
+      "result": null,
+      "nextStep": null,
+      "heroImage": null,
+      "heroAlt": null,
+      "heroCaption": null,
+      "demoUrl": null,
+      "readyForPublication": false,
+      "featured": true,
+      "role": null,
+      "stack": [],
+      "video": null,
+      "model": null,
+      "problem": null,
+      "built": null,
+      "howItWorks": null,
+      "diagram": null
+    },
     {
       "title": "WireTrace",
       "slug": "wiretrace",
@@ -82,25 +167,19 @@
       "heroAlt": "WireTrace visualizer tracing the M1 Ground net: an Arduino, breadboard, servo and supply with every connected pin circled in orange.",
       "heroCaption": "Visualizer · tracing the M1 Ground net",
       "demoUrl": null,
-      "readyForPublication": false
-    },
-    {
-      "title": "FaceTracekr",
-      "slug": "facetracekr",
-      "discipline": "Computer vision · Accessibility",
-      "summary": "Explore how head movement and intentional winks can control a cursor.",
-      "editorPrompt": "Show one intentional wink alongside a normal blink. Describe how you assessed responsiveness.",
-      "sourceUrl": "https://github.com/The-John-Man/FaceTracekr",
-      "status": null,
-      "contribution": null,
-      "designDecision": null,
-      "result": null,
-      "nextStep": null,
-      "heroImage": null,
-      "heroAlt": null,
-      "heroCaption": null,
-      "demoUrl": null,
-      "readyForPublication": false
+      "readyForPublication": false,
+      "featured": true,
+      "role": null,
+      "stack": [
+        "TypeScript",
+        "Rust"
+      ],
+      "video": null,
+      "model": null,
+      "problem": null,
+      "built": null,
+      "howItWorks": null,
+      "diagram": null
     },
     {
       "title": "Humline",
@@ -118,7 +197,45 @@
       "heroAlt": "Humline piano roll showing six notes from C4 to C5 under the waveform of the source audio.",
       "heroCaption": "Piano roll · synthetic example, not a recorded hum",
       "demoUrl": null,
-      "readyForPublication": false
+      "readyForPublication": false,
+      "featured": true,
+      "role": null,
+      "stack": [],
+      "video": null,
+      "model": null,
+      "problem": null,
+      "built": null,
+      "howItWorks": null,
+      "diagram": null
+    },
+    {
+      "title": "FaceTracekr",
+      "slug": "facetracekr",
+      "discipline": "Computer vision · Accessibility",
+      "summary": "Explore how head movement and intentional winks can control a cursor.",
+      "editorPrompt": "Show one intentional wink alongside a normal blink. Describe how you assessed responsiveness.",
+      "sourceUrl": "https://github.com/The-John-Man/FaceTracekr",
+      "status": null,
+      "contribution": null,
+      "designDecision": null,
+      "result": null,
+      "nextStep": null,
+      "heroImage": null,
+      "heroAlt": null,
+      "heroCaption": null,
+      "demoUrl": null,
+      "readyForPublication": false,
+      "featured": false,
+      "role": null,
+      "stack": [
+        "Python"
+      ],
+      "video": null,
+      "model": null,
+      "problem": null,
+      "built": null,
+      "howItWorks": null,
+      "diagram": null
     },
     {
       "title": "Tower of Hanoi gantry",
@@ -136,7 +253,16 @@
       "heroAlt": null,
       "heroCaption": null,
       "demoUrl": null,
-      "readyForPublication": false
+      "readyForPublication": false,
+      "featured": false,
+      "role": null,
+      "stack": [],
+      "video": null,
+      "model": null,
+      "problem": null,
+      "built": null,
+      "howItWorks": null,
+      "diagram": null
     }
   ],
   "goals": [
@@ -155,6 +281,148 @@
       "proposedNextExperiment": "Compare two visual feedback cues during calibration.",
       "successCriterionToSet": null,
       "evidence": null
+    }
+  ],
+  "showEmptySlots": true,
+  "origin": [
+    {
+      "id": "grandmother",
+      "title": "It started with my grandmother.",
+      "body": "She needed a simpler way to keep track of her insulin, so I built her an app. It was the first time something I made mattered to someone.",
+      "photo": null,
+      "photoAlt": null,
+      "photoPrompt": "Photo: the insulin tracker on a phone, or you with your grandmother"
+    },
+    {
+      "id": "rc",
+      "title": "Then things started moving.",
+      "body": "RC cars taught me that code is only half the story. Motors, gears and batteries all get a vote.",
+      "photo": null,
+      "photoAlt": null,
+      "photoPrompt": "Photo: an RC car on the bench, shell off"
+    },
+    {
+      "id": "waterloo",
+      "title": "Now I do it properly.",
+      "body": "I study Mechatronics Engineering at the University of Waterloo, where mechanics, electronics and software are one subject.",
+      "photo": null,
+      "photoAlt": null,
+      "photoPrompt": "Photo: you on campus or in the lab"
+    }
+  ],
+  "facts": [
+    "Waterloo Mechatronics",
+    "Certified lifeguard",
+    "Ontario",
+    "Hackathon regular"
+  ],
+  "skills": [
+    {
+      "name": "Python",
+      "group": "software",
+      "part": "mcu",
+      "usedIn": "facetracekr",
+      "note": null
+    },
+    {
+      "name": "C++",
+      "group": "software",
+      "part": "qfp",
+      "usedIn": null,
+      "note": null
+    },
+    {
+      "name": "TypeScript",
+      "group": "software",
+      "part": "dip",
+      "usedIn": "wiretrace",
+      "note": null
+    },
+    {
+      "name": "Rust",
+      "group": "software",
+      "part": "crystal",
+      "usedIn": "wiretrace",
+      "note": null
+    },
+    {
+      "name": "Arduino",
+      "group": "hardware",
+      "part": "devboard",
+      "usedIn": null,
+      "note": null
+    },
+    {
+      "name": "SolidWorks",
+      "group": "cad",
+      "part": "gear",
+      "usedIn": null,
+      "note": null
+    }
+  ],
+  "beyond": {
+    "photos": [
+      {
+        "src": null,
+        "alt": null,
+        "caption": null,
+        "prompt": "Photo: on the lifeguard chair"
+      },
+      {
+        "src": null,
+        "alt": null,
+        "caption": null,
+        "prompt": "Photo: your hackathon team at 3 a.m."
+      },
+      {
+        "src": null,
+        "alt": null,
+        "caption": null,
+        "prompt": "Photo: something you made for fun"
+      },
+      {
+        "src": null,
+        "alt": null,
+        "caption": null,
+        "prompt": "Photo: event sound or lighting setup"
+      },
+      {
+        "src": null,
+        "alt": null,
+        "caption": null,
+        "prompt": "Photo: you, away from a screen"
+      }
+    ],
+    "events": [
+      {
+        "name": "CIVIC Hack",
+        "built": null
+      },
+      {
+        "name": "NASA Space Apps",
+        "built": null
+      },
+      {
+        "name": "DeltaHacks",
+        "built": null
+      }
+    ]
+  },
+  "directions": [
+    {
+      "id": "defense",
+      "title": "Defense",
+      "why": null
+    },
+    {
+      "id": "automotive",
+      "title": "Automotive",
+      "why": null
+    },
+    {
+      "id": "ai",
+      "title": "AI",
+      "why": null
     }
   ]
 }

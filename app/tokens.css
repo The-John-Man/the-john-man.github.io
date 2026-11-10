@@ -5,8 +5,17 @@
   --muted-text: #51565b;
   --rule: #c8c8c1;
   --signal: #2448cf;
-  --type: "Instrument Sans", Arial, sans-serif;
-  --annotation: "IBM Plex Mono", Consolas, monospace;
+  --type: var(--font-body), Arial, sans-serif;
+  --annotation: var(--font-mono), Consolas, monospace;
+  --display-face: var(--font-display), Arial, sans-serif;
+  /* The board: matte black solder mask, ENIG gold pads, white silkscreen. */
+  --mask: #0b0d10;
+  --mask-relief: #161a20;
+  --gold: #c8a04a;
+  --silk: #e9e6dc;
+  --silk-dim: #9a9c98;
+  --signal-lit: #6f8cff;
+  --led-amber: #ffb020;
   --display: clamp(3.25rem, 8vw, 8.5rem);
   --chapter: clamp(2.4rem, 5.7vw, 5.8rem);
   --body: clamp(1rem, 1.35vw, 1.25rem);

@@ -1,29 +1,28 @@
-import data from "@/content/site";
-import Intro from "./components/intro";
-import { Arrow } from "./components/icons";
+import Rail from "./home/rail";
+import Stage from "./home/stage";
+import Skills from "./home/skills";
+import {
+  Beyond,
+  Boot,
+  Connect,
+  Experience,
+  Goals,
+  Origin,
+  Projects,
+} from "./home/sections";
 export default function Home() {
   return (
-    <main id="main">
-      <Intro />
-      <section className="closing">
-        <p className="eyebrow">Always a work in progress</p>
-        <h2>
-          Let’s make
-          <br />a connection.
-        </h2>
-        {data.profile.contactUrl ? (
-          <a className="text-link" href={data.profile.contactUrl}>
-            Get in touch <Arrow />
-          </a>
-        ) : (
-          <a className="text-link" href="https://github.com/The-John-Man">
-            Find me on GitHub <Arrow />
-          </a>
-        )}
-        <a className="back-top" href="#main">
-          Back to the start <Arrow back />
-        </a>
-      </section>
+    <main id="main" className="board">
+      <Stage />
+      <Rail />
+      <Boot />
+      <Origin />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Beyond />
+      <Goals />
+      <Connect />
     </main>
   );
 }
