@@ -22,29 +22,30 @@
       "asset": null,
       "alt": null,
       "caption": null,
-      "prompt": "Which constraint changed the gantry design? Include a sketch."
+      "prompt": "TODO: a hand sketch of the constraint that changed the gantry."
     },
     {
       "label": "Build",
-      "asset": null,
-      "alt": null,
-      "caption": null,
+      "asset": "/projects/hanoi-gantry/hero.webp",
+      "alt": "CAD render of the Tower of Hanoi gantry: a fixed bridge, trolley, lift and gripper over four discs.",
+      "caption": "CAD assembly of the Tower of Hanoi gantry, rendered from the build model.",
       "prompt": "Which part did you contribute? Show the matching build or CAD view."
     },
     {
       "label": "Test",
-      "asset": null,
-      "alt": null,
-      "caption": null,
+      "asset": "/projects/hanoi-gantry/bench.webp",
+      "alt": "Unverified lab photo: a VEX IQ brain and an arm on a bench. Not confirmed to be the Hanoi gantry.",
+      "caption": "Unverified lab photo. A VEX IQ brain and an arm on the bench, not confirmed to be this gantry.",
       "prompt": "What did you try, what did you observe, and what changed?"
     }
   ],
   "experience": [
     {
+      "id": "create",
       "organization": "University of Toronto",
       "role": "CREATE program",
       "type": null,
-      "dates": null,
+      "dates": "Jul 2025",
       "context": null,
       "personalAction": null,
       "outcome": null,
@@ -60,7 +61,8 @@
       "personalAction": null,
       "outcome": null,
       "media": null,
-      "open": false
+      "open": false,
+      "id": null
     },
     {
       "organization": "Kumon",
@@ -71,7 +73,8 @@
       "personalAction": null,
       "outcome": null,
       "media": null,
-      "open": false
+      "open": false,
+      "id": null
     },
     {
       "organization": null,
@@ -82,7 +85,8 @@
       "personalAction": null,
       "outcome": null,
       "media": null,
-      "open": false
+      "open": false,
+      "id": null
     },
     {
       "organization": null,
@@ -93,133 +97,288 @@
       "personalAction": null,
       "outcome": null,
       "media": null,
-      "open": true
+      "open": true,
+      "id": null
     }
   ],
   "projects": [
     {
-      "title": "Insulin tracker",
-      "slug": "insulin-tracker",
-      "discipline": "Mobile · Health",
-      "summary": "An app that helps my grandmother keep track of her insulin.",
-      "editorPrompt": "Screen recording of logging a dose, or a photo of the app in her hands.",
-      "sourceUrl": null,
-      "status": null,
+      "sourceUrl": "https://github.com/The-John-Man/WireTrace",
+      "status": "Active",
       "contribution": null,
       "designDecision": null,
       "result": null,
-      "nextStep": null,
-      "heroImage": null,
-      "heroAlt": null,
-      "heroCaption": null,
-      "demoUrl": null,
+      "nextStep": "A short clip of tracing a net, and a photo of the same circuit on a real breadboard.",
+      "heroImage": "/projects/wiretrace/hero.webp",
+      "heroAlt": "WireTrace visualizer showing an Arduino, breadboard, servo and supply.",
+      "heroCaption": "Visualizer · Arduino, breadboard, servo and supply",
+      "demoUrl": "https://wire-trace.vercel.app/app?example=visualizer-starter",
       "readyForPublication": false,
       "featured": true,
       "role": null,
-      "stack": [],
+      "stack": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tauri",
+        "Rust",
+        "React Flow",
+        "Vitest",
+        "Playwright"
+      ],
       "video": null,
       "model": null,
       "problem": null,
       "built": null,
       "howItWorks": null,
-      "diagram": null
-    },
-    {
-      "title": "RC vehicles",
-      "slug": "rc-vehicles",
-      "discipline": "Mechanical · Electronics",
-      "summary": "Building radio-controlled cars.",
-      "editorPrompt": "Photo or clip of a car with the shell off. Export the SolidWorks assembly as GLB for a 3D exploded view.",
-      "sourceUrl": null,
-      "status": null,
-      "contribution": null,
-      "designDecision": null,
-      "result": null,
-      "nextStep": null,
-      "heroImage": null,
-      "heroAlt": null,
-      "heroCaption": null,
-      "demoUrl": null,
-      "readyForPublication": false,
-      "featured": true,
-      "role": null,
-      "stack": [],
-      "video": null,
-      "model": null,
-      "problem": null,
-      "built": null,
-      "howItWorks": null,
-      "diagram": null
-    },
-    {
+      "diagram": null,
+      "gallery": [
+        {
+          "src": "/projects/wiretrace/map.webp",
+          "alt": "WireTrace map view of the starter example.",
+          "width": 1440,
+          "height": 900,
+          "caption": "Map view"
+        },
+        {
+          "src": "/projects/wiretrace/connections.webp",
+          "alt": "WireTrace connections list showing ten connections.",
+          "width": 1440,
+          "height": 900,
+          "caption": "Connections"
+        },
+        {
+          "src": "/projects/wiretrace/checks.webp",
+          "alt": "WireTrace checks panel for the starter example.",
+          "width": 1440,
+          "height": 900,
+          "caption": "Checks"
+        },
+        {
+          "src": "/projects/wiretrace/export.webp",
+          "alt": "WireTrace export dialog for pin definitions.",
+          "width": 1440,
+          "height": 900,
+          "caption": "Export"
+        },
+        {
+          "src": "/projects/wiretrace/landing-traced.webp",
+          "alt": "WireTrace landing page with a traced net drawn across the board.",
+          "width": 1440,
+          "height": 900,
+          "caption": "Landing page, net traced"
+        },
+        {
+          "src": "/projects/wiretrace/mobile.webp",
+          "alt": "WireTrace example on a phone-width screen.",
+          "width": 1170,
+          "height": 1992,
+          "caption": "Example on a narrow screen"
+        }
+      ],
+      "compare": {
+        "before": "/projects/wiretrace/landing.webp",
+        "after": "/projects/wiretrace/hero.webp",
+        "beforeAlt": "WireTrace landing page, before opening the visualizer.",
+        "afterAlt": "WireTrace visualizer with the Arduino, breadboard, servo and supply.",
+        "caption": "Temporary comparison: the landing page beside the visualizer. A redesign before-and-after is still to come."
+      },
+      "extraLinks": null,
+      "disclaimer": null,
+      "thread": null,
       "title": "WireTrace",
       "slug": "wiretrace",
       "discipline": "Electronics · Software",
-      "summary": "Plan a breadboard layout and see where each jumper goes.",
-      "editorPrompt": "Show one circuit in the visualizer, then show what changed when a pin assignment was corrected.",
-      "sourceUrl": "https://github.com/The-John-Man/WireTrace",
-      "status": null,
+      "summary": "A wiring record for Arduino builds: plan a breadboard, trace every net, save checkpoints, and export matching pin definitions.",
+      "editorPrompt": "Show one circuit in the visualizer, then show what changed when a pin assignment was corrected."
+    },
+    {
+      "sourceUrl": "https://github.com/The-John-Man/humline",
+      "status": "Shipped",
       "contribution": null,
       "designDecision": null,
       "result": null,
-      "nextStep": null,
-      "heroImage": "/shots/wiretrace-net.png",
-      "heroAlt": "WireTrace visualizer tracing the M1 Ground net: an Arduino, breadboard, servo and supply with every connected pin circled in orange.",
-      "heroCaption": "Visualizer · tracing the M1 Ground net",
-      "demoUrl": null,
+      "nextStep": "A real hummed phrase beside its MIDI, and a fix so the demo URL works on its own.",
+      "heroImage": "/projects/humline/hero.webp",
+      "heroAlt": "Humline studio with a synthetic example converted to notes on the piano roll.",
+      "heroCaption": "Studio · synthetic example converted to notes",
+      "demoUrl": "https://the-john-man.github.io/humline/",
       "readyForPublication": false,
       "featured": true,
-      "role": null,
+      "role": "Solo",
       "stack": [
+        "React",
         "TypeScript",
-        "Rust"
+        "Vite",
+        "Web Audio",
+        "Pitchy",
+        "MIDI",
+        "Express",
+        "PostgreSQL",
+        "Clerk",
+        "Playwright"
       ],
       "video": null,
       "model": null,
       "problem": null,
       "built": null,
       "howItWorks": null,
-      "diagram": null
-    },
-    {
+      "diagram": null,
+      "gallery": [
+        {
+          "src": "/projects/humline/welcome.webp",
+          "alt": "Humline welcome page.",
+          "width": 1440,
+          "height": 900,
+          "caption": "Welcome"
+        },
+        {
+          "src": "/projects/humline/studio-empty.webp",
+          "alt": "Humline studio before any notes are added.",
+          "width": 1440,
+          "height": 900,
+          "caption": "Empty studio"
+        },
+        {
+          "src": "/projects/humline/hero-mobile.webp",
+          "alt": "Humline studio with example notes on a phone-width screen.",
+          "width": 1170,
+          "height": 1992,
+          "caption": "Example notes on a narrow screen"
+        },
+        {
+          "src": "/projects/humline/welcome-mobile.webp",
+          "alt": "Humline welcome page on a phone-width screen.",
+          "width": 1170,
+          "height": 1992,
+          "caption": "Welcome on a narrow screen"
+        }
+      ],
+      "compare": null,
+      "extraLinks": null,
+      "disclaimer": null,
+      "thread": null,
       "title": "Humline",
       "slug": "humline",
       "discipline": "Audio · Software",
-      "summary": "Hum a melody and turn it into MIDI.",
-      "editorPrompt": "Pair a short original recording with its MIDI output, then describe a pitch-detection decision.",
+      "summary": "Hum a melody, see it as notes on a piano roll, edit it, and export MIDI. Built solo at Georgian's Build North hackathon.",
+      "editorPrompt": "Pair a short original recording with its MIDI output, then describe a pitch-detection decision."
+    },
+    {
       "sourceUrl": null,
-      "status": null,
+      "status": "In progress",
       "contribution": null,
       "designDecision": null,
       "result": null,
-      "nextStep": null,
-      "heroImage": "/shots/humline-roll.png",
-      "heroAlt": "Humline piano roll showing six notes from C4 to C5 under the waveform of the source audio.",
-      "heroCaption": "Piano roll · synthetic example, not a recorded hum",
+      "nextStep": "Build photos and a demo-day video after Nov 27. Replace the CAD render when those exist.",
+      "heroImage": "/projects/hanoi-gantry/hero.webp",
+      "heroAlt": "CAD render of the Tower of Hanoi gantry: bridge, trolley, lift and gripper.",
+      "heroCaption": "CAD assembly render · stand-in until a build photo",
+      "demoUrl": null,
+      "readyForPublication": false,
+      "featured": true,
+      "role": "Lift, solver and integration, with Samuel Shaw, Kushi Kallam and Dylan Rolfe.",
+      "stack": [
+        "VEX IQ",
+        "SolidWorks",
+        "3D printing",
+        "Python"
+      ],
+      "video": null,
+      "model": "/projects/hanoi-gantry/VEX_Hanoi_Gantry.glb",
+      "problem": null,
+      "built": null,
+      "howItWorks": null,
+      "diagram": null,
+      "gallery": [
+        {
+          "src": "/projects/hanoi-gantry/alt.webp",
+          "alt": "A second CAD render of the Tower of Hanoi gantry.",
+          "width": 1440,
+          "height": 900,
+          "caption": "Another view of the assembly"
+        },
+        {
+          "src": "/projects/hanoi-gantry/print-parts.webp",
+          "alt": "Print-part preview of the trolley, lift guide, lift mast rack and brain mount.",
+          "width": 1650,
+          "height": 1100,
+          "caption": "Parts to print"
+        },
+        {
+          "src": "/projects/hanoi-gantry/bench.webp",
+          "alt": "Unverified lab photo: a VEX IQ brain and an arm on a bench. Not confirmed to be the Hanoi gantry.",
+          "width": 1139,
+          "height": 1663,
+          "caption": "Unverified lab photo. Not confirmed to be this gantry."
+        }
+      ],
+      "compare": null,
+      "extraLinks": [
+        {
+          "label": "Design review",
+          "href": "https://docs.google.com/presentation/d/1eVDOn_HZLUKAjZSkj7_NGWtngs5jJxt3eCCjgQNJ4LI/edit"
+        },
+        {
+          "label": "Brief",
+          "href": "https://docs.google.com/document/d/1GDXz8wGS6ON4F1WaMjP9yyvUWRuvDkXoCr13UE-y9j8/edit"
+        }
+      ],
+      "disclaimer": null,
+      "thread": null,
+      "title": "Tower of Hanoi gantry",
+      "slug": "hanoi-gantry",
+      "discipline": "Robotics · Team design",
+      "summary": "A four-person first-year robot: a fixed bridge, trolley, four-bar lift and two-jaw gripper that solves a four-disc Tower of Hanoi in 15 moves.",
+      "editorPrompt": "Show the horizontal carriage and vertical lift. Credit teammates and identify John's part."
+    },
+    {
+      "sourceUrl": null,
+      "status": "Jun 2024 – Dec 2025",
+      "contribution": null,
+      "designDecision": null,
+      "result": null,
+      "nextStep": "Capture login, a typed meal, and the parsed record from demo data only.",
+      "heroImage": null,
+      "heroAlt": null,
+      "heroCaption": null,
       "demoUrl": null,
       "readyForPublication": false,
       "featured": true,
       "role": null,
-      "stack": [],
+      "stack": [
+        "Python",
+        "Flask",
+        "SQLite",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "OpenRouter"
+      ],
       "video": null,
       "model": null,
       "problem": null,
       "built": null,
       "howItWorks": null,
-      "diagram": null
+      "diagram": null,
+      "gallery": null,
+      "compare": null,
+      "extraLinks": null,
+      "disclaimer": "A personal log for one person. It is not medical advice and it does not decide a dose.",
+      "thread": "Built for one person first",
+      "title": "Insulin tracker",
+      "slug": "insulin-tracker",
+      "discipline": "Web · AI · Health",
+      "summary": "A natural-language insulin log I built for my grandmother. She types what she ate, and a language model returns dose and timing records as strict JSON.",
+      "editorPrompt": "TODO: three screens from a local run with made-up data, in a phone frame. Never use real health data."
     },
     {
-      "title": "FaceTracekr",
-      "slug": "facetracekr",
-      "discipline": "Computer vision · Accessibility",
-      "summary": "Explore how head movement and intentional winks can control a cursor.",
-      "editorPrompt": "Show one intentional wink alongside a normal blink. Describe how you assessed responsiveness.",
-      "sourceUrl": "https://github.com/The-John-Man/FaceTracekr",
-      "status": null,
+      "sourceUrl": "https://github.com/The-John-Man/FaceTrackerJohn",
+      "status": "Active",
       "contribution": null,
       "designDecision": null,
       "result": null,
-      "nextStep": null,
+      "nextStep": "Record calibration, cursor travel, and one deliberate wink-click against a normal blink.",
       "heroImage": null,
       "heroAlt": null,
       "heroCaption": null,
@@ -228,27 +387,36 @@
       "featured": false,
       "role": null,
       "stack": [
-        "Python"
+        "Python",
+        "OpenCV",
+        "MediaPipe",
+        "One Euro filter",
+        "PyInstaller"
       ],
       "video": null,
       "model": null,
       "problem": null,
       "built": null,
       "howItWorks": null,
-      "diagram": null
+      "diagram": null,
+      "gallery": null,
+      "compare": null,
+      "extraLinks": null,
+      "disclaimer": null,
+      "thread": "Built for one person first",
+      "title": "HeadNav",
+      "slug": "headnav",
+      "discipline": "Computer vision · Accessibility",
+      "summary": "A free, webcam-only mouse you control with your head, with personal calibration and wink, mouth, nod or dwell clicks, for people with limited hand mobility.",
+      "editorPrompt": "TODO: a webcam inset with landmarks beside the cursor hitting targets. No screenshot exists yet."
     },
     {
-      "title": "Tower of Hanoi gantry",
-      "slug": "hanoi-gantry",
-      "discipline": "Robotics · Team design",
-      "summary": "Design a gantry and gripper to move four Tower of Hanoi pieces.",
-      "editorPrompt": "Show the horizontal carriage and vertical lift. Credit teammates and identify John’s part.",
       "sourceUrl": null,
-      "status": null,
+      "status": "Mar 2015 – Sep 2025",
       "contribution": null,
       "designDecision": null,
       "result": null,
-      "nextStep": null,
+      "nextStep": "A shell-off photo, a running clip, and a motor, gearing and battery spec table.",
       "heroImage": null,
       "heroAlt": null,
       "heroCaption": null,
@@ -256,13 +424,30 @@
       "readyForPublication": false,
       "featured": false,
       "role": null,
-      "stack": [],
+      "stack": [
+        "DC motors",
+        "Brushless motors",
+        "ESCs",
+        "Gearing",
+        "Batteries",
+        "Soldering"
+      ],
       "video": null,
       "model": null,
       "problem": null,
       "built": null,
       "howItWorks": null,
-      "diagram": null
+      "diagram": null,
+      "gallery": null,
+      "compare": null,
+      "extraLinks": null,
+      "disclaimer": null,
+      "thread": null,
+      "title": "RC vehicles",
+      "slug": "rc-vehicles",
+      "discipline": "Mechanical · Electronics",
+      "summary": "Ten years of building and modifying RC cars, matching motors, gear ratios and batteries to speed and torque.",
+      "editorPrompt": "TODO: a photo with the shell off on a dark bench. Nothing usable was found in the files."
     }
   ],
   "goals": [
@@ -272,11 +457,13 @@
       "question": "Can a two-wheel robot carry an envelope across an office and stay balanced?",
       "proposedNextExperiment": "Simulate balancing with a representative payload.",
       "successCriterionToSet": "Choose a payload and measurable balance criterion before the first trial.",
-      "evidence": null
+      "evidence": null,
+      "related": null
     },
     {
       "title": "Hands-free interaction",
       "stage": "Proposed",
+      "related": "/projects/headnav",
       "question": "How can someone tell whether their wink was detected during calibration?",
       "proposedNextExperiment": "Compare two visual feedback cues during calibration.",
       "successCriterionToSet": null,
@@ -321,43 +508,109 @@
       "name": "Python",
       "group": "software",
       "part": "mcu",
-      "usedIn": "facetracekr",
-      "note": null
+      "usedIn": "headnav",
+      "note": null,
+      "href": null,
+      "linkLabel": null
     },
     {
       "name": "C++",
       "group": "software",
       "part": "qfp",
       "usedIn": null,
-      "note": null
+      "note": null,
+      "href": "/experience#create",
+      "linkLabel": "Used in CREATE"
     },
     {
       "name": "TypeScript",
       "group": "software",
       "part": "dip",
       "usedIn": "wiretrace",
-      "note": null
+      "note": null,
+      "href": null,
+      "linkLabel": null
     },
     {
       "name": "Rust",
       "group": "software",
       "part": "crystal",
       "usedIn": "wiretrace",
-      "note": null
+      "note": null,
+      "href": null,
+      "linkLabel": null
     },
     {
       "name": "Arduino",
       "group": "hardware",
       "part": "devboard",
       "usedIn": null,
-      "note": null
+      "note": null,
+      "href": "/experience#create",
+      "linkLabel": "Used in CREATE"
     },
     {
       "name": "SolidWorks",
       "group": "cad",
       "part": "gear",
+      "usedIn": "hanoi-gantry",
+      "note": null,
+      "href": null,
+      "linkLabel": null
+    },
+    {
+      "name": "React",
+      "group": "software",
+      "part": "qfp",
+      "usedIn": "wiretrace",
+      "note": null,
+      "href": null,
+      "linkLabel": null
+    },
+    {
+      "name": "Flask",
+      "group": "software",
+      "part": "qfp",
+      "usedIn": "insulin-tracker",
+      "note": null,
+      "href": null,
+      "linkLabel": null
+    },
+    {
+      "name": "OpenCV/MediaPipe",
+      "group": "software",
+      "part": "qfp",
+      "usedIn": "headnav",
+      "note": null,
+      "href": null,
+      "linkLabel": null
+    },
+    {
+      "name": "VEX IQ",
+      "group": "hardware",
+      "part": "devboard",
+      "usedIn": "hanoi-gantry",
+      "note": null,
+      "href": null,
+      "linkLabel": null
+    },
+    {
+      "name": "AutoCAD",
+      "group": "cad",
+      "part": "gear",
       "usedIn": null,
-      "note": null
+      "note": null,
+      "href": "/#drawing-board",
+      "linkLabel": "On the drawing board"
+    },
+    {
+      "name": "Playwright",
+      "group": "software",
+      "part": "qfp",
+      "usedIn": "wiretrace",
+      "note": null,
+      "href": null,
+      "linkLabel": null
     }
   ],
   "beyond": {
@@ -395,16 +648,32 @@
     ],
     "events": [
       {
+        "name": "Build North",
+        "built": "Humline",
+        "href": "/projects/humline",
+        "when": "Done",
+        "note": null
+      },
+      {
         "name": "CIVIC Hack",
-        "built": null
+        "built": null,
+        "href": null,
+        "when": "Nov 12–14",
+        "note": null
       },
       {
         "name": "NASA Space Apps",
-        "built": null
+        "built": null,
+        "href": null,
+        "when": "Nov 14–15",
+        "note": "Team Chan's Disciples"
       },
       {
         "name": "DeltaHacks",
-        "built": null
+        "built": null,
+        "href": null,
+        "when": "Applied",
+        "note": null
       }
     ]
   },
@@ -424,5 +693,31 @@
       "title": "AI",
       "why": null
     }
-  ]
+  ],
+  "drawingBoard": {
+    "intro": "SolidWorks renders from the Tower of Hanoi gantry. Hand drawings are not posted yet.",
+    "shots": [
+      {
+        "src": "/projects/hanoi-gantry/hero.webp",
+        "alt": "CAD render of the Tower of Hanoi gantry.",
+        "width": 1440,
+        "height": 900,
+        "caption": "Assembly"
+      },
+      {
+        "src": "/projects/hanoi-gantry/alt.webp",
+        "alt": "A second CAD render of the Tower of Hanoi gantry.",
+        "width": 1440,
+        "height": 900,
+        "caption": "Second view"
+      },
+      {
+        "src": "/projects/hanoi-gantry/print-parts.webp",
+        "alt": "Print-part preview of the trolley, lift guide, lift mast rack and brain mount.",
+        "width": 1650,
+        "height": 1100,
+        "caption": "Print parts"
+      }
+    ]
+  }
 }
