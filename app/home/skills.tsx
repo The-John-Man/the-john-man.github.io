@@ -73,6 +73,10 @@ export default function Skills() {
                     <a href={"/projects/" + project.slug}>
                       Used in {project.title} <Arrow />
                     </a>
+                  ) : s.href ? (
+                    <a href={s.href}>
+                      {s.linkLabel} <Arrow />
+                    </a>
                   ) : (
                     <Slot value={null} prompt="Used in: add a project" />
                   )}

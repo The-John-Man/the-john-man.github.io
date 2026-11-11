@@ -1,6 +1,9 @@
 import data from "@/content/site";
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import BeforeAfter from "../../components/before-after";
 import { Arrow, ProjectMedia } from "../../components/icons";
+import ModelViewer from "../../components/model-viewer";
 import NetDemo from "../../components/net-demo";
 import TitleBlock from "../../components/title-block";
 import Slot from "../../home/slot";
@@ -27,6 +30,10 @@ export default async function Project({
   if (!p) notFound();
   const next = data.projects[(index + 1) % data.projects.length];
   const stack = p.stack as string[];
+  const gallery = Array.isArray(p.gallery) ? p.gallery : [];
+  const extraLinks = Array.isArray(p.extraLinks) ? p.extraLinks : [];
+  const compare =
+    p.compare && typeof p.compare === "object" ? p.compare : null;
   const sections: [string, string | null, string][] = [
     ["Problem", p.problem, "To add: who had the problem, and what made it hard"],
     ["What I built", p.built ?? p.contribution, "To add: what you made, and which parts were yours"],
@@ -42,8 +49,10 @@ export default async function Project({
       />
       <div className="case-header">
         <p className="eyebrow">{p.discipline}</p>
+        {p.thread && <p className="eyebrow">{p.thread}</p>}
         <h1>{p.title}</h1>
         <p className="lead">{p.summary}</p>
+        {p.disclaimer && <p className="muted">{p.disclaimer}</p>}
         <Slot value={p.role} prompt="Role: to add (solo, or your part in the team)">
           <p className="muted">{p.role}</p>
         </Slot>
@@ -58,6 +67,11 @@ export default async function Project({
               Try the demo <Arrow />
             </a>
           )}
+          {extraLinks.map((link) => (
+            <a className="text-link" key={link.href} href={link.href}>
+              {link.label} <Arrow />
+            </a>
+          ))}
         </div>
       </div>
       <figure
@@ -73,6 +87,26 @@ export default async function Project({
           <figcaption>{p.heroCaption}</figcaption>
         </Slot>
       </figure>
+      {p.model && p.heroImage && (
+        <ModelViewer src={p.model} poster={p.heroImage} alt={p.heroAlt ?? p.title} />
+      )}
+      {gallery.length > 0 && (
+        <ul className="case-gallery">
+          {gallery.map((shot) => (
+            <li key={shot.src}>
+              <Image
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.width}
+                height={shot.height}
+                sizes="(max-width: 700px) 100vw, 480px"
+                style={{ width: "100%", height: "auto" }}
+              />
+              <span>{shot.caption}</span>
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="case-sections">
         {sections.map(([title, value, prompt]) => (
           <section key={title}>
@@ -80,6 +114,15 @@ export default async function Project({
             <Slot value={value} prompt={prompt}>
               <p className="lead">{value}</p>
             </Slot>
+            {title === "How it works" && compare && (
+              <BeforeAfter
+                before={compare.before}
+                after={compare.after}
+                beforeAlt={compare.beforeAlt}
+                afterAlt={compare.afterAlt}
+                caption={compare.caption}
+              />
+            )}
             {title === "How it works" && (
               <Slot
                 value={p.diagram}

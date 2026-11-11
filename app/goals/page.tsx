@@ -1,4 +1,5 @@
 import data from "@/content/site";
+import { Arrow } from "../components/icons";
 import TitleBlock from "../components/title-block";
 import Slot from "../home/slot";
 export const metadata = { title: "Goals — John Manuel" };
@@ -37,6 +38,11 @@ export default function Goals() {
               </p>
               <h3>{g.title}</h3>
               <p>{g.question}</p>
+              {g.related && (
+                <a className="text-link" href={g.related}>
+                  HeadNav <Arrow />
+                </a>
+              )}
               <div className="next">
                 <small>Next experiment</small>
                 <p>{g.proposedNextExperiment}</p>

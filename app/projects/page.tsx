@@ -13,7 +13,8 @@ export default function Projects() {
           {data.projects.map((p) => (
             <li key={p.slug}>
               <a href={"/projects/" + p.slug}>
-                <Slot value={p.heroImage} prompt="Cover to add" ratio="16 / 10">
+                {/* TODO: HeadNav, the insulin tracker, and RC vehicles still need a real cover. */}
+                <Slot value={p.heroImage} prompt={p.heroImage ? "Cover to add" : p.editorPrompt} ratio="16 / 10">
                   <ProjectMedia p={p} />
                 </Slot>
                 <span className="eyebrow">{p.discipline}</span>

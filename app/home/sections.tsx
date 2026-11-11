@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import data from "@/content/site";
+import HackathonBadges from "../components/hackathon-badges";
 import { Arrow, ProjectMedia } from "../components/icons";
 import Slot from "./slot";
 
@@ -94,7 +95,8 @@ export function Experience() {
           <div className="steps">
             {entries.map((e, i) => (
               <article
-                key={i}
+                key={e.id ?? i}
+                id={e.id ?? undefined}
                 className={e.open ? "role role-open" : "role"}
                 data-step={i}
                 data-current={i === 0 ? "" : undefined}
@@ -178,6 +180,11 @@ export function Projects() {
                           Repository <Arrow />
                         </a>
                       )}
+                      {p.demoUrl && (
+                        <a className="text-link" href={p.demoUrl}>
+                          Try the demo <Arrow />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </article>
@@ -225,23 +232,7 @@ export function Beyond() {
           </figure>
         ))}
       </div>
-      <div className="events">
-        {data.beyond.events.map((ev) => (
-          <details key={ev.name} name="event">
-            <summary>
-              <span className="mono">Hackathon</span>
-              <strong>{ev.name}</strong>
-              <span className="dim">What I built</span>
-            </summary>
-            <Slot
-              value={ev.built}
-              prompt="To add: one sentence on what you built and with whom"
-            >
-              <p>{ev.built}</p>
-            </Slot>
-          </details>
-        ))}
-      </div>
+      <HackathonBadges />
     </section>
   );
 }

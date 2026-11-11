@@ -1,5 +1,7 @@
 "use client";
+import Image from "next/image";
 import { useState, useRef } from "react";
+import data from "@/content/site";
 import { ProjectArt } from "./icons";
 const labels = ["Sketch", "Build", "Test"];
 export default function Notebook() {
@@ -41,7 +43,9 @@ export default function Notebook() {
           </button>
         ))}
       </div>
-      {labels.map((label, i) => (
+      {labels.map((label, i) => {
+        const sheet = data.aboutNotebook[i];
+        return (
         <div
           key={label}
           role="tabpanel"
@@ -52,13 +56,18 @@ export default function Notebook() {
           className={"notebook-sheet notebook-" + i}
         >
           <p className="eyebrow">Design notebook / 0{i + 1}</p>
-          {i === 0 ? (
+          {sheet.asset ? (
+            <Image
+              src={sheet.asset}
+              alt={sheet.alt ?? ""}
+              width={i === 2 ? 1139 : 1440}
+              height={i === 2 ? 1663 : 900}
+              sizes="(max-width: 700px) 100vw, 640px"
+              style={{ width: "100%", height: "auto" }}
+            />
+          ) : i === 0 ? (
+            // TODO: no hand sketch of the gantry yet.
             <ProjectArt kind="hanoi-gantry" />
-          ) : i === 1 ? (
-            <div className="exploded">
-              <ProjectArt kind="hanoi-gantry" />
-              <span>ASSEMBLY STUDY</span>
-            </div>
           ) : (
             <svg
               className="test-chart"
@@ -91,13 +100,12 @@ export default function Notebook() {
           <div className="notebook-caption">
             <span>0{i + 1}</span>
             <p>
-              {i === 2
-                ? "Test observations and results will appear here."
-                : "Illustrative gantry study. Original project media and captions are not yet supplied."}
+              {sheet.caption ?? sheet.prompt}
             </p>
           </div>
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

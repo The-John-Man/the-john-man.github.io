@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Arrow({ back = false }: { back?: boolean }) {
   return (
     <svg
@@ -16,13 +18,14 @@ export function ProjectMedia({
   p: { slug: string; heroImage: string | null; heroAlt: string | null };
 }) {
   return p.heroImage ? (
-    // eslint-disable-next-line @next/next/no-img-element -- static export, no image optimizer
-    <img
+    <Image
       className="illustration project-shot"
       src={p.heroImage}
       alt={p.heroAlt ?? ""}
-      width={640}
-      height={400}
+      width={1440}
+      height={900}
+      sizes="(max-width: 700px) 100vw, 720px"
+      style={{ width: "100%", height: "auto" }}
     />
   ) : (
     <ProjectArt kind={p.slug} />
@@ -88,7 +91,7 @@ export function ProjectArt({ kind }: { kind: string }) {
             SIGNAL
           </text>
         </>
-      ) : kind === "facetracekr" ? (
+      ) : kind === "headnav" ? (
         <>
           <path
             d="M190 92h-35v35m295-35h35v35M190 310h-35v-35m295 35h35v-35"

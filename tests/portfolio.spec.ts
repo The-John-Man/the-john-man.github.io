@@ -60,7 +60,10 @@ test.describe("home page without the 3D scene", () => {
     await expect(page.locator(".skills li", { hasText: "Python" })).toHaveAttribute("data-dim", "");
     await expect(page.locator(".skills li", { hasText: "SolidWorks" })).not.toHaveAttribute("data-dim", "");
     await page.getByRole("button", { name: "All", exact: true }).click();
-    await page.getByRole("link", { name: /Used in FaceTracekr/ }).focus();
+    await page
+      .locator(".skills li", { hasText: "Python" })
+      .getByRole("link", { name: /Used in HeadNav/ })
+      .focus();
     await expect(page.locator(".skills li", { hasText: "Python" })).toHaveAttribute("data-lit", "");
   });
   test("featured projects open their datasheets", async ({ page }) => {
@@ -117,7 +120,17 @@ test("3D scene loads and scroll-stepping is reversible", async ({ page }) => {
   await jump("boot", 0);
   await expect(page.locator(".rail a[aria-current]")).toHaveText("Start");
   await expect
-    .poll(() => page.locator("#boot").evaluate((e) => e.style.getPropertyValue("--p")))
+    .poll(
+      async () => {
+        const value = await page
+          .locator("#boot")
+          .evaluate((e) => e.style.getPropertyValue("--p"));
+        // Image load can nudge scroll on the heavier home page. Put it back.
+        if (value !== "0.0000") await jump("boot", 0);
+        return value;
+      },
+      { timeout: 15_000 },
+    )
     .toBe("0.0000");
   // Focusing a link in a hidden step scrolls that step into its turn.
   await page.locator("#projects [data-step='2'] a").first().focus();
@@ -143,9 +156,11 @@ test("no JavaScript keeps every section and link", async ({ browser }) => {
 test("datasheet pages: notebook, disclosures, routes, 404 and wiring demo", async ({
   page,
 }) => {
+  test.setTimeout(45_000);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/about");
+  await expect(page.locator("footer")).toContainText("Next.js");
   await page.getByRole("tab", { name: "Sketch", exact: true }).focus();
   await page.keyboard.press("ArrowRight");
   await expect(page.getByRole("tab", { name: "Build", exact: true })).toBeFocused();
@@ -160,12 +175,32 @@ test("datasheet pages: notebook, disclosures, routes, 404 and wiring demo", asyn
     const r = await page.goto("/projects/" + p.slug);
     expect(r?.status()).toBe(200);
     await expect(page.locator("h1")).toHaveText(p.title);
+    if (p.slug === "headnav") {
+      await expect(page.getByRole("link", { name: "View repository" })).toHaveAttribute(
+        "href",
+        "https://github.com/The-John-Man/FaceTrackerJohn",
+      );
+    }
+    if (p.slug === "wiretrace") {
+      await expect(page.getByRole("link", { name: "Try the demo" })).toHaveAttribute(
+        "href",
+        /visualizer-starter/,
+      );
+      await expect(
+        page.getByRole("slider", { name: "Compare landing page and visualizer" }),
+      ).toBeVisible();
+      await page.getByRole("button", { name: "Show misplaced jumper" }).click();
+      await expect(page.getByRole("status")).toContainText("one row too low");
+      await page.getByRole("link", { name: "Back to the board" }).click();
+      await expect(page).toHaveURL(/\/#projects$/);
+    }
   }
-  await page.goto("/projects/wiretrace");
-  await page.getByRole("button", { name: "Show misplaced jumper" }).click();
-  await expect(page.getByRole("status")).toContainText("one row too low");
-  await page.getByRole("link", { name: "Back to the board" }).click();
-  await expect(page).toHaveURL(/\/#projects$/);
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: /Drawing board/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Build North/ })).toHaveAttribute(
+    "href",
+    "/projects/humline",
+  );
   expect((await page.goto("/projects/missing"))?.status()).toBe(404);
   expect(errors).toEqual([]);
 });

@@ -20,7 +20,7 @@ export default function Experience() {
             {data.experience
               .filter((e) => !e.open)
               .map((e, i) => (
-              <details key={i} name="experience">
+              <details key={e.id ?? i} id={e.id ?? undefined} name="experience">
                 <summary>
                   <span className="timeline-pad" />
                   <span>

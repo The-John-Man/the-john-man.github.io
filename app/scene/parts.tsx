@@ -456,7 +456,10 @@ export function Modules() {
               <group position={[0, 0, 0.04]} rotation={[Math.PI / 2, 0, 0]}>
                 <Silk text={"J" + (i + 1)} at={[-1.45, 0, -1.85]} size={0.26} color={GOLD} />
                 <Silk
-                  text={(featured[i]?.title ?? "").toUpperCase()}
+                  text={(featured[i]?.slug === "hanoi-gantry"
+                    ? "HANOI GANTRY"
+                    : (featured[i]?.title ?? "")
+                  ).toUpperCase()}
                   face="display"
                   at={[-1.45, 0, -1.25]}
                   size={0.36}
