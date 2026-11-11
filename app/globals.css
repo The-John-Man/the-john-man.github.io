@@ -492,6 +492,99 @@ footer small {
   font-size: 10px;
   color: var(--muted-text);
 }
+.colophon {
+  flex-basis: 100%;
+  max-width: 62ch;
+  margin: 0;
+  color: var(--muted-text);
+}
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem 4%;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.case-gallery li {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+}
+.case-gallery img,
+.model-slot img,
+.compare img {
+  display: block;
+  max-width: 100%;
+}
+.case-gallery span,
+.compare figcaption,
+.model-slot figcaption {
+  font: 11px var(--annotation);
+  color: var(--muted-text);
+}
+.compare {
+  margin: 1.5rem 0 0;
+}
+.compare-frame {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: #e9e8df;
+}
+.compare-top {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  border-right: 2px solid var(--signal);
+}
+.compare-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  padding: 4px 8px;
+  background: var(--graphite);
+  color: white;
+  font: 11px var(--annotation);
+}
+.compare-tag-after {
+  left: auto;
+  right: 10px;
+}
+.compare label {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+  font: 12px var(--annotation);
+  color: var(--muted-text);
+}
+.compare input {
+  width: 100%;
+  min-height: 44px;
+  accent-color: var(--signal);
+}
+.compare-still {
+  display: grid;
+  gap: 1rem;
+}
+.model-slot {
+  margin: 2.5rem 0 0;
+}
+.model-canvas {
+  aspect-ratio: 16 / 10;
+  background: #e9e8df;
+  border: 1px solid var(--rule);
+}
+.model-slot button {
+  border: 1px solid var(--rule);
+  background: transparent;
+  margin-top: 12px;
+  padding: 14px 20px;
+  min-height: 44px;
+}
 .skip {
   position: absolute;
   top: -100px;

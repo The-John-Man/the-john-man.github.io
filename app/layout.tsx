@@ -59,6 +59,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </a>
           <span>Mechatronics · University of Waterloo</span>
           <small>Development preview · editorial draft</small>
+          <p className="colophon">
+            Built with Next.js. The home page is a 3D circuit board rendered
+            with React Three Fiber, and it falls back to the page itself when
+            motion is reduced.{" "}
+            <a href="https://github.com/The-John-Man/the-john-man.github.io">
+              Source
+            </a>
+            .
+          </p>
         </footer>
       </body>
     </html>

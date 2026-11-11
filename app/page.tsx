@@ -1,3 +1,4 @@
+import DrawingBoard from "./components/drawing-board";
 import Rail from "./home/rail";
 import Stage from "./home/stage";
 import Skills from "./home/skills";
@@ -18,6 +19,7 @@ export default function Home() {
       <Boot />
       <Origin />
       <Skills />
+      <DrawingBoard />
       <Experience />
       <Projects />
       <Beyond />

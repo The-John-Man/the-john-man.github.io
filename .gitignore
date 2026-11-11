@@ -47,3 +47,6 @@ next-env.d.ts
 # local tool output
 /.playwright-mcp/
 /graphify-out/
+
+# Reference screenshots and source media. Optimized copies live in public/projects/.
+/_portfolio-assets/
